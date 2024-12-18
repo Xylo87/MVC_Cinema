@@ -1,8 +1,8 @@
 <?php ob_start(); ?>
 
-<p class="uk-label uk-label-warning">Il y a <?= $requete->rowCount() ?> films</p>
+<p>Il y a <?= $requete->rowCount() ?> films</p>
 
-<table class="uk-table uk-table-stripped">
+<table>
     <thead>
         <tr>
             <th>TITRE</th>
@@ -11,10 +11,10 @@
     </thead>
     <tbody>
         <?php
-            foreach ($requete->fetchAll() as $film) { ?> 
+            foreach ($films as $film) { ?> 
                 <tr>
                     <td><?= $film["titre"] ?></td>
-                    <td><?= $film["annee_sortie"] ?></td>
+                    <td><?= $film["annee"] ?></td>
                 </tr>
             <?php } ?>
     </tbody>
@@ -26,6 +26,5 @@ $titre = "Liste des films";
 $titre_secondaire ="Liste des films";
 
 $contenu = ob_get_clean();
-
 
 require "view/template.php";
