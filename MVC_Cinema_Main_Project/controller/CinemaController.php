@@ -13,6 +13,7 @@ class CinemaController {
         $requete = $pdo->prepare("
             SELECT *
             FROM film
+            ORDER BY film.annee
         ");
         $requete->execute();
         
@@ -53,5 +54,21 @@ class CinemaController {
         $realis = $requete->fetchAll();
 
         require "view/listReali.php";
+    }
+
+    // Détail film
+    public function detFilm($id) {
+
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->prepare("
+            SELECT * 
+            FROM film
+            WHERE film.idFilm = :id
+        ");
+        $requete->execute(["id" => $id]);
+
+        $detFilm = $requete->fetch();
+
+        require "view/detFilm.php";
     }
 }

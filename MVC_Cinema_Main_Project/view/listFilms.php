@@ -6,7 +6,7 @@
     <thead>
         <tr>
             <th>TITRE</th>
-            <th>ANNEE SORTIE</th>
+            <th>ANNEE DE SORTIE</th>
         </tr>
     </thead>
     <tbody>
