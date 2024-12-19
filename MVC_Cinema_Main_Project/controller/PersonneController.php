@@ -39,4 +39,22 @@ class PersonneController {
 
         require "view/listRealis.php";
     }
+
+
+
+    // Détail réalisateur
+    // public function detReali($id) {
+        
+    //     $pdo = Connect::seConnecter();
+    //     $requete = $pdo->prepare("
+    //         SELECT *
+    //         FROM personne
+    //         INNER JOIN reali ON reali.idPersonne = personne.idPersonne
+    //     ");
+    //     $requete->execute();
+
+    //     $detReali = $requete->fetch();
+
+    //     require "view/detReali.php";
+    // }
 }

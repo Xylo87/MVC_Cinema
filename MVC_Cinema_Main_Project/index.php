@@ -24,5 +24,7 @@ if (isset($_GET["action"])) {
             break;
         case "detFilm" : $ctrlFilm->detFilm($id);
             break;
+        // case "detReali" : $ctrlReali->detReali();
+        //     break;
     }
 }

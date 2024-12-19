@@ -4,7 +4,7 @@
     <thead>
         <tr>
             <th>ANNEE DE SORTIE</th>
-            <th>DUREE (MIN)</th>
+            <th>DUREE</th>
             <th>SYNOPSIS</th>
             <th>NOTE</th>
         </tr> 
@@ -35,18 +35,23 @@
         <tr>
             <th colspan="2">CASTING</th>
             <th>RÉALISATEUR</th>
-            <th>GENRE</th>
+            <th colspan="2">GENRE</th>
         </tr>  
     </thead>
     <tbody>
         <?php
             foreach ($casting as $cast) { ?> 
                 <tr>
-                    <td colspan="2"><?= $cast["cast"] ?></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                    <td colspan="2"><?= $cast["cast"] ?> as <?= $cast["personnage"] ?></td>
             <?php } ?>
+            <td><?= $detFilm["reali"] ?></td>
+            <td>
+            <?php
+            foreach ($genres as $genre) { ?>
+                    <?= $genre["libelle"] ?><br>
+            <?php } ?>
+            </td>
+        </tr>
     </tbody>
 </table>
 
