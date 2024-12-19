@@ -6,15 +6,13 @@
     <thead>
         <tr>
             <th>TITRE</th>
-            <th>ANNEE DE SORTIE</th>
         </tr>
     </thead>
     <tbody>
         <?php
             foreach ($films as $film) { ?> 
                 <tr>
-                    <td><?= $film["titre"] ?></td>
-                    <td><?= $film["annee"] ?></td>
+                    <td><a href="index.php?action=detFilm&id=<?= $film["idFilm"] ?>"><?= $film["titre"] ?></a></td>
                 </tr>
             <?php } ?>
     </tbody>

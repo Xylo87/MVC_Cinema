@@ -6,7 +6,6 @@
     <thead>
         <tr>
             <th>ACTEURICE</th>
-            <th>ANNEE DE NAISSANCE</th>
         </tr>
     </thead>
     <tbody>
@@ -14,7 +13,6 @@
             foreach ($acteurices as $acteurice) { ?> 
                 <tr>
                     <td><?= $acteurice["acteurice"] ?></td>
-                    <td><?= $acteurice["anneeNaissance"] ?></td>
                 </tr>
             <?php } ?>
     </tbody>

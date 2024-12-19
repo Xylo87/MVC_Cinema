@@ -6,7 +6,6 @@
     <thead>
         <tr>
             <th>REALISATEUR</th>
-            <th>ANNEE DE NAISSANCE</th>
         </tr>
     </thead>
     <tbody>
@@ -14,7 +13,6 @@
             foreach ($realis as $reali) { ?> 
                 <tr>
                     <td><?= $reali["reali"] ?></td>
-                    <td><?= $reali["anneeNaissance"] ?></td>
                 </tr>
             <?php } ?>
     </tbody>

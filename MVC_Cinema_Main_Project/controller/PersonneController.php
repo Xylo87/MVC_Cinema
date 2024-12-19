@@ -4,23 +4,7 @@ namespace Controller;
 
 use Model\Connect;
 
-class CinemaController {
-
-    // Lister les films
-    public function listFilms() {
-
-        $pdo = Connect::seConnecter();
-        $requete = $pdo->prepare("
-            SELECT *
-            FROM film
-            ORDER BY film.annee
-        ");
-        $requete->execute();
-        
-        $films = $requete->fetchAll();
-
-        require "view/listFilms.php";
-    }
+class PersonneController {
 
     // Lister les acteurices
     public function listActeurices() {
@@ -40,7 +24,7 @@ class CinemaController {
     }
 
     // Lister les réalisateurs
-    public function listReali() {
+    public function listRealis() {
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
@@ -53,22 +37,6 @@ class CinemaController {
 
         $realis = $requete->fetchAll();
 
-        require "view/listReali.php";
-    }
-
-    // Détail film
-    public function detFilm($id) {
-
-        $pdo = Connect::seConnecter();
-        $requete = $pdo->prepare("
-            SELECT * 
-            FROM film
-            WHERE film.idFilm = :id
-        ");
-        $requete->execute(["id" => $id]);
-
-        $detFilm = $requete->fetch();
-
-        require "view/detFilm.php";
+        require "view/listRealis.php";
     }
 }
