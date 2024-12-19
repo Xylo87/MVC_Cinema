@@ -28,7 +28,7 @@ class PersonneController {
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
-            SELECT CONCAT(personne.prenom,' ',personne.nom) AS reali, DATE_FORMAT(personne.dateNais, '%D %b %Y') AS anneeNaissance
+            SELECT CONCAT(personne.prenom,' ',personne.nom) AS reali, DATE_FORMAT(personne.dateNais, '%D %b %Y') AS anneeNaissance, reali.idReali
             FROM personne
             INNER JOIN reali ON reali.idPersonne = personne.idPersonne
             ORDER BY DATE_FORMAT(personne.dateNais, '%Y')
@@ -43,18 +43,32 @@ class PersonneController {
 
 
     // Détail réalisateur
-    // public function detReali($id) {
+    public function detReali($id) {
         
-    //     $pdo = Connect::seConnecter();
-    //     $requete = $pdo->prepare("
-    //         SELECT *
-    //         FROM personne
-    //         INNER JOIN reali ON reali.idPersonne = personne.idPersonne
-    //     ");
-    //     $requete->execute();
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->prepare("
+            SELECT CONCAT(personne.prenom,' ',personne.nom) AS name, DATE_FORMAT(personne.dateNais, \"%d %M %Y\") AS dateNais, personne.bio, personne.photo
+            FROM personne
+            INNER JOIN reali ON reali.idPersonne = personne.idPersonne
+            WHERE reali.idReali = :id
+        ");
+        $requete->execute(["id" => $id]);
 
-    //     $detReali = $requete->fetch();
+        $detReali = $requete->fetch();
 
-    //     require "view/detReali.php";
-    // }
+
+        // FILMS REALI
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->prepare("
+            SELECT film.titre AS title, DATE_FORMAT(film.annee, \"%Y\") AS date
+            FROM film
+            INNER JOIN reali ON reali.idReali = film.idReali
+            WHERE reali.idReali = :id
+        ");
+        $requete->execute(["id" => $id]);
+
+        $filmsReali = $requete->fetchAll();
+
+        require "view/detReali.php";
+    }
 }

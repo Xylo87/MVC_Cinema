@@ -9,9 +9,9 @@
 <body>
     <nav>
         <ul>
-            <li><a href="index.php?action=listFilms">Films</a></li>
-            <li><a href="index.php?action=listActeurices">Acteurs</a></li>
-            <li><a href="index.php?action=listRealis">Réalisateurs</a></li>
+            <li><a href="index.php?action=listFilms">Movies</a></li>
+            <li><a href="index.php?action=listActeurices">Actors</a></li>
+            <li><a href="index.php?action=listRealis">Directors</a></li>
             <li><a href="index.php?action=listGenres">Genres</a></li>
         </ul>
     </nav>

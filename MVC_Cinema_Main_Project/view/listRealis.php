@@ -1,18 +1,18 @@
 <?php ob_start(); ?>
 
-<p>Il y a <?= $requete->rowCount() ?> réalisateurs</p>
+<p>There is <?= $requete->rowCount() ?> directors</p>
 
 <table>
     <thead>
         <tr>
-            <th>REALISATEUR</th>
+            <th>DIRECTOR</th>
         </tr>
     </thead>
     <tbody>
         <?php
             foreach ($realis as $reali) { ?> 
                 <tr>
-                    <td><?= $reali["reali"] ?></td>
+                    <td><a href="index.php?action=detReali&id=<?= $reali["idReali"] ?>"><?= $reali["reali"] ?></a></td>
                 </tr>
             <?php } ?>
     </tbody>
@@ -20,8 +20,8 @@
 
 <?php 
 
-$titre = "Liste des realisateurs";
-$titre_secondaire ="Liste des realisateurs";
+$titre = "List of directors";
+$titre_secondaire ="List of directors";
 
 $contenu = ob_get_clean();
 

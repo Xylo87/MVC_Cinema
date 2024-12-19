@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<p>Il y a <?= $requete->rowCount() ?> genres de films</p>
+<p>There is <?= $requete->rowCount() ?> genres</p>
 
 <table>
     <thead>
@@ -20,8 +20,8 @@
 
 <?php 
 
-$titre = "Liste des genres";
-$titre_secondaire ="Liste des genres";
+$titre = "List of genres";
+$titre_secondaire ="List of genres";
 
 $contenu = ob_get_clean();
 

@@ -1,11 +1,11 @@
 <?php ob_start(); ?>
 
-<p>Il y a <?= $requete->rowCount() ?> acteurices</p>
+<p>There is <?= $requete->rowCount() ?> actors</p>
 
 <table>
     <thead>
         <tr>
-            <th>ACTEURICE</th>
+            <th>ACTORS</th>
         </tr>
     </thead>
     <tbody>
@@ -20,8 +20,8 @@
 
 <?php 
 
-$titre = "Liste des acteurices";
-$titre_secondaire ="Liste des acteurices";
+$titre = "List of actors";
+$titre_secondaire ="List of actors";
 
 $contenu = ob_get_clean();
 

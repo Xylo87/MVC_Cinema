@@ -45,9 +45,11 @@ class FilmController {
     // Détail film
     public function detFilm($id) {
 
+        // SET lc_time_names = 'fr_FR';
+
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
-            SELECT film.titre, film.annee, DATE_FORMAT(SEC_TO_TIME(duree * 60), \"%H:%i\") AS duree, film.synopsis, film.note, film.affiche, film.trailer, CONCAT(personne.prenom,' ',personne.nom) AS reali
+            SELECT film.titre, DATE_FORMAT(film.annee, \"%d %M %Y\") AS annee, DATE_FORMAT(SEC_TO_TIME(duree * 60), \"%kh%i\") AS duree, film.synopsis, film.note, film.affiche, film.trailer, CONCAT(personne.prenom,' ',personne.nom) AS reali
             FROM film
             INNER JOIN reali ON reali.idReali = film.idReali
             INNER JOIN personne ON personne.idPersonne = reali.idPersonne

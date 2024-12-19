@@ -3,10 +3,10 @@
 <table>
     <thead>
         <tr>
-            <th>ANNEE DE SORTIE</th>
-            <th>DUREE</th>
+            <th>DATE OF RELEASE</th>
+            <th>RUNNING TIME</th>
             <th>SYNOPSIS</th>
-            <th>NOTE</th>
+            <th>SCORE</th>
         </tr> 
     </thead>
     <tbody>
@@ -19,7 +19,7 @@
     </tbody>
     <thead>
         <tr>
-            <th>AFFICHE</th>
+            <th>POSTER</th>
             <th colspan="3">TRAILER</th>
         </tr>  
     </thead>
@@ -34,7 +34,7 @@
     <thead>
         <tr>
             <th colspan="2">CASTING</th>
-            <th>RÉALISATEUR</th>
+            <th>DIRECTOR</th>
             <th colspan="2">GENRE</th>
         </tr>  
     </thead>
