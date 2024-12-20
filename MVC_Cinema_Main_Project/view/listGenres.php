@@ -2,6 +2,8 @@
 
 <p>There is <?= $requete->rowCount() ?> genres</p>
 
+<a href="index.php?action=addGenre">Add genre</a>
+
 <table>
     <thead>
         <tr>
@@ -12,7 +14,7 @@
         <?php
             foreach ($genres as $genre) { ?> 
                 <tr>
-                    <td><?= $genre["libelle"] ?></td>
+                    <td><a href="index.php?action=detGenre&id=<?= $genre["idGenre"] ?>"><?= $genre["libelle"] ?></a></td>
                 </tr>
             <?php } ?>
     </tbody>

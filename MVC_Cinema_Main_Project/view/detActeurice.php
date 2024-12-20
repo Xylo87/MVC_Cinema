@@ -10,9 +10,9 @@
     </thead>
     <tbody>
         <tr>
-            <td><img src="<?= $detReali["photo"] ?>"></td>
-            <td><?= $detReali["dateNais"] ?></td>
-            <td><?= $detReali["bio"] ?></td>
+            <td><img src="<?= $detActeurice["photo"] ?>"></td>
+            <td><?= $detActeurice["dateNais"] ?></td>
+            <td><?= $detActeurice["bio"] ?></td>
         </tr>
     </tbody>
     <thead>
@@ -23,9 +23,9 @@
     </thead>
     <tbody>
         <?php
-            foreach ($filmsReali as $movie) { ?> 
+            foreach ($filmsAct as $movie) { ?> 
                 <tr>
-                    <td><a href="index.php?action=detFilm&id=<?= $movie["idFilm"] ?>"><?= $movie["title"] ?></td>
+                    <td><a href="index.php?action=detFilm&id=<?= $movie["idFilm"] ?>"><?= $movie["title"] ?></a> as <?= $movie["perso"] ?></td>
                     <td colspan="2"><?= $movie["date"] ?></td>
                 </tr>
             <?php } ?>
@@ -34,8 +34,8 @@
 
 <?php 
 
-$titre = $detReali["name"];
-$titre_secondaire = $detReali["name"];
+$titre = $detActeurice["name"];
+$titre_secondaire = $detActeurice["name"];
 
 $contenu = ob_get_clean();
 

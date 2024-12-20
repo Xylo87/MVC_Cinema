@@ -23,33 +23,14 @@ class FilmController {
         require "view/listFilms.php";
     }
 
-
-
-    // Lister les genres
-    public function listGenres() {
-
-        $pdo = Connect::seConnecter();
-        $requete = $pdo->prepare("
-            SELECT genre.libelle
-            FROM genre
-        ");
-        $requete->execute();
-
-        $genres = $requete->fetchAll();
-
-        require "view/listGenres.php";
-    }
-
-
+    
 
     // Détail film
     public function detFilm($id) {
 
-        // SET lc_time_names = 'fr_FR';
-
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
-            SELECT film.titre, DATE_FORMAT(film.annee, \"%d %M %Y\") AS annee, DATE_FORMAT(SEC_TO_TIME(duree * 60), \"%kh%i\") AS duree, film.synopsis, film.note, film.affiche, film.trailer, CONCAT(personne.prenom,' ',personne.nom) AS reali
+            SELECT film.titre, DATE_FORMAT(film.annee, \"%d %M %Y\") AS annee, DATE_FORMAT(SEC_TO_TIME(duree * 60), \"%kh%i\") AS duree, film.synopsis, film.note, film.affiche, film.trailer, CONCAT(personne.prenom,' ',personne.nom) AS reali, reali.idReali
             FROM film
             INNER JOIN reali ON reali.idReali = film.idReali
             INNER JOIN personne ON personne.idPersonne = reali.idPersonne
@@ -64,7 +45,7 @@ class FilmController {
         // CASTING
         $pdo = Connect::seConnecter();
         $requeteCasting = $pdo->prepare("
-            SELECT CONCAT(personne.prenom,' ',personne.nom) AS cast, role.personnage
+           SELECT CONCAT(personne.prenom,' ',personne.nom) AS cast, role.personnage, acteurice.idActeurice
             FROM film
             INNER JOIN interpretation ON interpretation.idFilm = film.idFilm
             INNER JOIN role ON role.idRole = interpretation.idRole
@@ -80,7 +61,7 @@ class FilmController {
         // GENRE
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
-            SELECT genre.libelle
+            SELECT genre.libelle, genre.idGenre
             FROM genre
             INNER JOIN categorie ON categorie.idGenre = genre.idGenre
             INNER JOIN film ON film.idFilm = categorie.idFilm

@@ -42,13 +42,13 @@
         <?php
             foreach ($casting as $cast) { ?> 
                 <tr>
-                    <td colspan="2"><?= $cast["cast"] ?> as <?= $cast["personnage"] ?></td>
+                    <td colspan="2"><a href="index.php?action=detActeurice&id=<?= $cast["idActeurice"] ?>"><?= $cast["cast"] ?></a> as <?= $cast["personnage"] ?></td>
             <?php } ?>
-            <td><?= $detFilm["reali"] ?></td>
+            <td><a href="index.php?action=detReali&id=<?= $detFilm["idReali"] ?>"><?= $detFilm["reali"] ?></a></td>
             <td>
             <?php
             foreach ($genres as $genre) { ?>
-                    <?= $genre["libelle"] ?><br>
+                    <a href="index.php?action=detGenre&id=<?= $genre["idGenre"] ?>"><?= $genre["libelle"] ?></a><br>
             <?php } ?>
             </td>
         </tr>

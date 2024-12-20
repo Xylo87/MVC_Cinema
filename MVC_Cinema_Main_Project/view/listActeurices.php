@@ -12,7 +12,7 @@
         <?php
             foreach ($acteurices as $acteurice) { ?> 
                 <tr>
-                    <td><?= $acteurice["acteurice"] ?></td>
+                    <td><a href="index.php?action=detActeurice&id=<?= $acteurice["idActeurice"] ?>"><?= $acteurice["acteurice"] ?></a></td>
                 </tr>
             <?php } ?>
     </tbody>

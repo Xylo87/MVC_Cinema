@@ -2,6 +2,8 @@
 
 <p>There is <?= $requete->rowCount() ?> directors</p>
 
+<a href="index.php?action=addReali">Add director</a>
+
 <table>
     <thead>
         <tr>
