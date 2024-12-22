@@ -107,21 +107,46 @@ class PersonneController {
     }
 
 
-
+    // AJOUT REALI
     public function addReali() {
 
         if (isset($_POST["submit"])) {
             
             $realiNom = filter_input(INPUT_POST, "realiNom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $realiPrenom = filter_input(INPUT_POST, "realiPrenom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $realiDate = filter_input(INPUT_POST, "realiPrenom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $realiSexe = filter_input(INPUT_POST, "realiSexe", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $realiDate = filter_input(INPUT_POST, "realiDate", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $realiBio = filter_input(INPUT_POST, "realiBio", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $realiPhoto = filter_input(INPUT_POST, "realiPhoto", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            if ($realiNom && $realiPrenom && $realiDate && $realiSexe && $realiBio && $realiPhoto) {
-                var_dump($realiNom, $realiPrenom, $realiDate, $realiSexe, $realiBio, $realiPhoto);
+            if ($realiNom && $realiPrenom && $realiSexe && $realiDate && $realiBio && $realiPhoto) {
+
+                $pdo = Connect::seConnecter();
+                $requete = $pdo->prepare("
+                    INSERT INTO personne (nom, prenom, sexe, dateNais, bio, photo) VALUES (:realiNom, :realiPrenom, :realiSexe, :realiDate, :realiBio, :realiPhoto)
+                ");
+                $requete->execute([
+                    "realiNom" => $realiNom,
+                    "realiPrenom" => $realiPrenom,
+                    "realiSexe" => $realiSexe,
+                    "realiDate" => $realiDate,
+                    "realiBio" => $realiBio,
+                    "realiPhoto" => $realiPhoto]);
+                
+                $idPersonne = $pdo->lastInsertId();
+                    
+                $requete2 = $pdo->prepare("
+                    INSERT INTO reali (idPersonne) VALUES (:id)
+                ");
+                $requete2->execute([
+                    "id" => $idPersonne
+                ]);
+
+                header("Location: index.php?action=listRealis&success=true");die;
+            } else {
+                header("Location: index.php?action=listRealis&success=false");die;
             }
         }
+        require "view/addReali.php";
     }
 }

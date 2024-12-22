@@ -21,6 +21,11 @@
             <th colspan="2">YEAR OF RELEASE</th>
         </tr>  
     </thead>
+    <?php if(count($filmsReali) == 0) { ?>
+    <tr>
+        <td colspan="3">No movie for this director.</td>
+    </tr>    
+    <?php } else { ?>
     <tbody>
         <?php
             foreach ($filmsReali as $movie) { ?> 
@@ -29,7 +34,8 @@
                     <td colspan="2"><?= $movie["date"] ?></td>
                 </tr>
             <?php } ?>
-    </tbody>
+    </tbody> 
+    <?php } ?>
 </table>
 
 <?php 

@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 
 <?php if(count($films) == 0) {
-    echo "<p>There is no movie</p>";
+    echo "<p>No movie for this genre.</p>";
 } else { ?>
 
 <table>

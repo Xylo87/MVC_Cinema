@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<p>There is <?= $requete->rowCount() ?> genres</p>
+<p>There is <?= $requete->rowCount() ?> genres.</p>
 
 <a href="index.php?action=addGenre">Add genre</a>
 
@@ -19,8 +19,18 @@
             <?php } ?>
     </tbody>
 </table>
+<br>
+<br>
 
 <?php 
+
+if (isset($_GET["success"])) {
+    if ($_GET["success"] === "true") {
+        echo "Add successful !";
+    } else {
+        echo "Something went wrong...";
+    }
+}
 
 $titre = "List of genres";
 $titre_secondaire ="List of genres";

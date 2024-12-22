@@ -2,6 +2,8 @@
 
 <p>There is <?= $requete->rowCount() ?> movies</p>
 
+<a href="index.php?action=addFilm">Add movie</a>
+
 <table>
     <thead>
         <tr>
@@ -19,6 +21,14 @@
 </table>
 
 <?php 
+
+if (isset($_GET["success"])) {
+    if ($_GET["success"] === "true") {
+        echo "Add successful !";
+    } else {
+        echo "Something went wrong...";
+    }
+}
 
 $titre = "List of movies";
 $titre_secondaire ="List of movies";

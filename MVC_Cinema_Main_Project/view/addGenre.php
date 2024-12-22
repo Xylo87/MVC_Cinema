@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 
 <form action="index.php?action=addGenre" method="POST">
-    <input type="text" name="libelle" id="libelle" required>
+    <input type="text" name="libelle" id="libelle" placeholder="Genre" required>
     <input type="submit" name="submit" value="Add">
 </form>
 

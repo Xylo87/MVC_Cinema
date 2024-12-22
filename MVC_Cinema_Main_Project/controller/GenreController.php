@@ -64,7 +64,9 @@ class GenreController {
                 ");
                 
                 $requete->execute(["libelle" => $libelle]);
-                header("Location: index.php?action=listGenres");die;
+                header("Location: index.php?action=listGenres&success=true");die;
+            } else {
+                header("Location: index.php?action=listGenres&success=false");die;
             }
         }
 

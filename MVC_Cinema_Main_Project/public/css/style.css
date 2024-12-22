@@ -18,3 +18,7 @@ td {
     text-align: center;
     border: solid 1px black;
 }
+
+fieldset {
+    width: fit-content;
+}

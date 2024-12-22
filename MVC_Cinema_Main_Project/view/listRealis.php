@@ -19,8 +19,18 @@
             <?php } ?>
     </tbody>
 </table>
+<br>
+<br>
 
 <?php 
+
+if (isset($_GET["success"])) {
+    if ($_GET["success"] === "true") {
+        echo "Add successful !";
+    } else {
+        echo "Something went wrong...";
+    }
+}
 
 $titre = "List of directors";
 $titre_secondaire ="List of directors";

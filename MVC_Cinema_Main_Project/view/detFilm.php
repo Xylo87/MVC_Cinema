@@ -38,6 +38,18 @@
             <th colspan="2">GENRE</th>
         </tr>  
     </thead>
+    <?php if(count($casting) == 0) { ?>
+    <tr>
+        <td colspan="2">No casting for this movie.</td>
+        <td><a href="index.php?action=detReali&id=<?= $detFilm["idReali"] ?>"><?= $detFilm["reali"] ?></a></td>
+        <td>
+            <?php
+            foreach ($genres as $genre) { ?>
+                    <a href="index.php?action=detGenre&id=<?= $genre["idGenre"] ?>"><?= $genre["libelle"] ?></a><br>
+            <?php } ?>
+            </td>
+    </tr>
+    <?php } else { ?>
     <tbody>
         <?php
             foreach ($casting as $cast) { ?> 
@@ -53,6 +65,7 @@
             </td>
         </tr>
     </tbody>
+    <?php } ?>
 </table>
 
 <?php 

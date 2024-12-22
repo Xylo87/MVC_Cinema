@@ -75,4 +75,73 @@ class FilmController {
 
         require "view/detFilm.php";
     }
-}
+
+
+
+    // AJOUT FILM
+    public function addFilm() {
+
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->prepare("
+            SELECT idGenre, libelle
+            FROM genre
+        ");
+        $requete->execute();
+
+        $genres = $requete->fetchAll();
+
+        $requete2 = $pdo->prepare("
+            SELECT idReali, CONCAT(personne.prenom,' ', personne.nom) AS name
+            FROM reali
+            INNER JOIN personne ON personne.idPersonne = reali.idPersonne
+        ");
+        $requete2->execute();
+
+        $realis = $requete2->fetchAll();
+
+        if (isset($_POST["submit"])) {
+            
+            $filmTitre = filter_input(INPUT_POST, "filmTitre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $filmDate = filter_input(INPUT_POST, "filmDate", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $filmDuree = filter_input(INPUT_POST, "filmDuree", FILTER_VALIDATE_INT);
+            $filmSynopsis = filter_input(INPUT_POST, "filmSynopsis", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $filmNote = filter_input(INPUT_POST, "filmNote", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $filmAffiche = filter_input(INPUT_POST, "filmAffiche", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $filmTrailer = filter_input(INPUT_POST, "filmTrailer", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $filmTrailer = filter_input(INPUT_POST, "filmTrailer", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $filmReali = filter_input(INPUT_POST, "filmReali", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $filmGenre = filter_input(INPUT_POST, "filmGenre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            if ($filmTitre && $filmDate && $filmDuree && $filmSynopsis && $filmNote && $filmAffiche && $filmTrailer && $filmReali && $filmGenre) {
+
+                $pdo = Connect::seConnecter();
+                $requete = $pdo->prepare("
+                    INSERT INTO film (titre, annee, duree, synopsis, note, affiche, trailer, idReali) VALUES (:filmTitre, :filmDate, :filmDuree, :filmSynopsis, :filmNote, :filmAffiche, :filmTrailer, :filmReali)
+                ");
+                $requete->execute([
+                    "filmTitre" => $filmTitre,
+                    "filmDate" => $filmDate,
+                    "filmDuree" => $filmDuree,
+                    "filmSynopsis" => $filmSynopsis,
+                    "filmNote" => $filmNote,
+                    "filmAffiche" => $filmAffiche,
+                    "filmTrailer" => $filmTrailer,
+                    "filmReali" => $filmReali]);
+
+                $idFilm = $pdo->lastInsertId();
+                
+                $requete2 = $pdo->prepare("
+                    INSERT INTO categorie (idFilm, idGenre) VALUES (:id, :filmGenre)
+                ");
+                $requete2->execute([
+                    "id" => $idFilm,
+                    "filmGenre" => $filmGenre]);
+
+                header("Location: index.php?action=listFilms&success=true");die;
+            } else {
+                header("Location: index.php?action=listFilms&success=false");die;
+            }
+        }
+        require "view/addFilm.php";
+    }
+}        
