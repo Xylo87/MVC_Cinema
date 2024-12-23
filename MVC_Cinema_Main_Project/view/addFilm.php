@@ -17,12 +17,12 @@
             echo "<option value=".$reali["idReali"].">".$reali["name"]."</option>";
         } ?>
     </select><br><br>
-    <select name="filmGenre" id="filmGenre" required>
-        <option value="">--Select a genre--</option>
-        <?php foreach ($genres as $genre) {
-            echo "<option value=".$genre["idGenre"].">".$genre["libelle"]."</option>";
-        } ?>
-    </select><br><br>
+    <fieldset>
+        <legend>Choose one or more genre</legend>
+            <?php foreach ($genres as $genre) {
+                echo "<input type=\"checkbox\" name=\"filmGenre[]\" value=".$genre["idGenre"].">".$genre["libelle"]."<br>";
+            } ?>
+    </fieldset><br><br>
     <input type="submit" name="submit" value="Add">
 </form>
 <br>

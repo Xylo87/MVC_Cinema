@@ -19,6 +19,8 @@
             <?php } ?>
     </tbody>
 </table>
+<br>
+<br>
 
 <?php 
 

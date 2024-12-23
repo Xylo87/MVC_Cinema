@@ -108,40 +108,41 @@ class FilmController {
             $filmNote = filter_input(INPUT_POST, "filmNote", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $filmAffiche = filter_input(INPUT_POST, "filmAffiche", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $filmTrailer = filter_input(INPUT_POST, "filmTrailer", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $filmTrailer = filter_input(INPUT_POST, "filmTrailer", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $filmReali = filter_input(INPUT_POST, "filmReali", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $filmGenre = filter_input(INPUT_POST, "filmGenre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $filmGenre = filter_input(INPUT_POST, "filmGenre", FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
 
             if ($filmTitre && $filmDate && $filmDuree && $filmSynopsis && $filmNote && $filmAffiche && $filmTrailer && $filmReali && $filmGenre) {
 
-                $pdo = Connect::seConnecter();
-                $requete = $pdo->prepare("
-                    INSERT INTO film (titre, annee, duree, synopsis, note, affiche, trailer, idReali) VALUES (:filmTitre, :filmDate, :filmDuree, :filmSynopsis, :filmNote, :filmAffiche, :filmTrailer, :filmReali)
-                ");
-                $requete->execute([
-                    "filmTitre" => $filmTitre,
-                    "filmDate" => $filmDate,
-                    "filmDuree" => $filmDuree,
-                    "filmSynopsis" => $filmSynopsis,
-                    "filmNote" => $filmNote,
-                    "filmAffiche" => $filmAffiche,
-                    "filmTrailer" => $filmTrailer,
-                    "filmReali" => $filmReali]);
+                var_dump($_POST["idGenre"]);
+                // $pdo = Connect::seConnecter();
+                // $requete = $pdo->prepare("
+                //     INSERT INTO film (titre, annee, duree, synopsis, note, affiche, trailer, idReali) VALUES (:filmTitre, :filmDate, :filmDuree, :filmSynopsis, :filmNote, :filmAffiche, :filmTrailer, :filmReali)
+                // ");
+                // $requete->execute([
+                //     "filmTitre" => $filmTitre,
+                //     "filmDate" => $filmDate,
+                //     "filmDuree" => $filmDuree,
+                //     "filmSynopsis" => $filmSynopsis,
+                //     "filmNote" => $filmNote,
+                //     "filmAffiche" => $filmAffiche,
+                //     "filmTrailer" => $filmTrailer,
+                //     "filmReali" => $filmReali]);
 
-                $idFilm = $pdo->lastInsertId();
+                // $idFilm = $pdo->lastInsertId();
                 
-                $requete2 = $pdo->prepare("
-                    INSERT INTO categorie (idFilm, idGenre) VALUES (:id, :filmGenre)
-                ");
-                $requete2->execute([
-                    "id" => $idFilm,
-                    "filmGenre" => $filmGenre]);
+                // $requete2 = $pdo->prepare("
+                //     INSERT INTO categorie (idFilm, idGenre) VALUES (:id, :filmGenre)
+                // ");
+                // $requete2->execute([
+                //     "id" => $idFilm,
+                //     "filmGenre" => $filmGenre]);
 
-                header("Location: index.php?action=listFilms&success=true");die;
+                header("Location: index.php?action=addFilm");die;
             } else {
-                header("Location: index.php?action=listFilms&success=false");die;
+                header("Location: index.php?action=addFilm");die;
             }
         }
         require "view/addFilm.php";
     }
-}        
+}     
+  
