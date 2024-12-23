@@ -113,36 +113,87 @@ class FilmController {
 
             if ($filmTitre && $filmDate && $filmDuree && $filmSynopsis && $filmNote && $filmAffiche && $filmTrailer && $filmReali && $filmGenre) {
 
-                var_dump($_POST["idGenre"]);
-                // $pdo = Connect::seConnecter();
-                // $requete = $pdo->prepare("
-                //     INSERT INTO film (titre, annee, duree, synopsis, note, affiche, trailer, idReali) VALUES (:filmTitre, :filmDate, :filmDuree, :filmSynopsis, :filmNote, :filmAffiche, :filmTrailer, :filmReali)
-                // ");
-                // $requete->execute([
-                //     "filmTitre" => $filmTitre,
-                //     "filmDate" => $filmDate,
-                //     "filmDuree" => $filmDuree,
-                //     "filmSynopsis" => $filmSynopsis,
-                //     "filmNote" => $filmNote,
-                //     "filmAffiche" => $filmAffiche,
-                //     "filmTrailer" => $filmTrailer,
-                //     "filmReali" => $filmReali]);
+                $pdo = Connect::seConnecter();
+                $requete = $pdo->prepare("
+                    INSERT INTO film (titre, annee, duree, synopsis, note, affiche, trailer, idReali) VALUES (:filmTitre, :filmDate, :filmDuree, :filmSynopsis, :filmNote, :filmAffiche, :filmTrailer, :filmReali)
+                ");
+                $requete->execute([
+                    "filmTitre" => $filmTitre,
+                    "filmDate" => $filmDate,
+                    "filmDuree" => $filmDuree,
+                    "filmSynopsis" => $filmSynopsis,
+                    "filmNote" => $filmNote,
+                    "filmAffiche" => $filmAffiche,
+                    "filmTrailer" => $filmTrailer,
+                    "filmReali" => $filmReali]);
 
-                // $idFilm = $pdo->lastInsertId();
+                $idFilm = $pdo->lastInsertId();
                 
-                // $requete2 = $pdo->prepare("
-                //     INSERT INTO categorie (idFilm, idGenre) VALUES (:id, :filmGenre)
-                // ");
-                // $requete2->execute([
-                //     "id" => $idFilm,
-                //     "filmGenre" => $filmGenre]);
+                foreach ($filmGenre as $genre) {
+                    $requete2 = $pdo->prepare("
+                        INSERT INTO categorie (idFilm, idGenre) VALUES (:id, :filmGenre)
+                    ");
+                    $requete2->execute([
+                        "id" => $idFilm,
+                        "filmGenre" => $genre]);
+                }
 
-                header("Location: index.php?action=addFilm");die;
+                header("Location: index.php?action=listFilms&success=true"); die;
             } else {
-                header("Location: index.php?action=addFilm");die;
+                header("Location: index.php?action=listFilms&success=false"); die;
             }
         }
         require "view/addFilm.php";
     }
-}     
-  
+
+
+
+
+    // SUPPRESSION FILM
+    public function deleteFilm() {
+
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->prepare("
+            SELECT idFilm, titre
+            FROM film
+        ");
+        $requete->execute();
+
+        $films = $requete->fetchAll();
+        
+        if(isset($_POST["submit"])) {
+
+            $film = filter_input(INPUT_POST, "film", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            // var_dump("ok");
+
+            if($film) {
+                $pdo = Connect::seConnecter();
+                $requete = $pdo->prepare("
+                    DELETE FROM categorie
+                    WHERE idFilm = :id
+                ");
+                $requete->execute([
+                    "id" => $film]);
+
+                $requete2 = $pdo->prepare("
+                    DELETE FROM film
+                    WHERE idFilm = :id
+                ");
+                $requete2->execute([
+                    "id" => $film]);
+                
+                $requete3 = $pdo->prepare("
+                    DELETE FROM interpretation
+                    WHERE idFilm = :id
+                ");
+                $requete3->execute([
+                    "id" => $film]);
+                
+                header("Location: index.php?action=listFilms&success=true");die;
+                } else {
+                header("Location: index.php?action=listFilms&success=false");die;
+                }
+        }
+        require "view/deleteFilm.php";
+    }
+}  

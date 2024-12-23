@@ -17,7 +17,7 @@
             echo "<option value=".$reali["idReali"].">".$reali["name"]."</option>";
         } ?>
     </select><br><br>
-    <fieldset>
+    <fieldset required>
         <legend>Choose one or more genre</legend>
             <?php foreach ($genres as $genre) {
                 echo "<input type=\"checkbox\" name=\"filmGenre[]\" value=".$genre["idGenre"].">".$genre["libelle"]."<br>";

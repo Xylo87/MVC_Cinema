@@ -22,3 +22,7 @@ td {
 fieldset {
     width: fit-content;
 }
+
+select {
+    text-align: center;
+}

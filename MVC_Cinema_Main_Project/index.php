@@ -38,5 +38,6 @@ if (isset($_GET["action"])) {
             break;
         case "addFilm" : $ctrlFilm->addFilm();
             break;
+        case "deleteFilm" : $ctrlFilm->deleteFilm();
     }
 }

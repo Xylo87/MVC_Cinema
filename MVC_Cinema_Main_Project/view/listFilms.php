@@ -2,7 +2,8 @@
 
 <p>There is <?= $requete->rowCount() ?> movies</p>
 
-<a href="index.php?action=addFilm">Add movie</a>
+<a href="index.php?action=addFilm">Add movie</a><br>
+<a href="index.php?action=deleteFilm">Delete movie</a><br><br>
 
 <table>
     <thead>
@@ -26,7 +27,7 @@
 
 if (isset($_GET["success"])) {
     if ($_GET["success"] === "true") {
-        echo "Add successful !";
+        echo "Add / Delete successful !";
     } else {
         echo "Something went wrong...";
     }
