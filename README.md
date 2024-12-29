@@ -1,4 +1,4 @@
-# ⚡🎥 Application type "Base de données en ligne" autour du Cinéma
+# ⚡🎥 Application type "Base de données en ligne" autour du Cinéma (PHP/SQL)
 
 ## 1. Description 
 Ce projet est un exercice pratique de programmation web utilisant l'architecture **Modèle/Vue/Contrôleur** et **PHP**.
