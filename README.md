@@ -13,7 +13,7 @@ Les informations affichées sont appelées depuis une base de données **MySQL**
 - Listage des films, acteurs/actrices et réalisateurs.
 - Les **Vues** sont interconnectées via des liens hypertextes, pour ce qui concerne les fiches détaillées ou les élements qui seraient communs à plusieurs films.
 - Fonctions d'ajout de *Genres*, de *Réalisateurs*, de *Films* et fonction de suppression de *Films*. 
-Ces fonctionnalités sont disponibles pour l'utilisateur au moyen de simples **Formulaires**
+Ces fonctionnalités sont disponibles pour l'utilisateur au moyen de simples **Formulaires**.
 Les ajouts et suppressions se font au sein des **Vues** mais également en base de données grâce aux **Contrôleurs** dédiés.
 - Respect des bonnes pratiques de codage :
   - **Temporisation de sortie**
