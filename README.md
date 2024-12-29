@@ -2,7 +2,7 @@
 
 ## 1. Description 
 Ce projet est un exercice pratique de programmation web utilisant l'architecture **Modèle/Vue/Contrôleur** et **PHP**.
-Il permet l'affichage d'une sélection de films (titre, date de sortie, durée, synopsis affiche, trailer etc.) ainsi que de fiches détaillés concernant son casting et sa réalisation. 
+Il permet l'affichage d'une sélection de films (titre, date de sortie, durée, synopsis, affiche, trailer etc.) ainsi que de fiches détaillés concernant leur casting et leur réalisation.
 Le projet s'inspire d'applications en ligne comme [IMDB](https://www.imdb.com/fr/).
 Les informations affichées sont appelées depuis une base de données **MySQL** grâce à l'architecure **MVC**.
 
