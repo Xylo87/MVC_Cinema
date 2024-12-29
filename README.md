@@ -47,9 +47,9 @@ Les ajouts et suppressions se font au sein des **Vues** mais également en base 
 
 ## 5. Améliorations possibles
 
-- Ajout de style avec CSS, pour faire correspondre l'application à la maquette suivante :
-[Home Page](https://www.figma.com/design/zM6koRKTMNnZ7x2gem2mpd/CCPM-(Cinema)---Home-Page?node-id=0-1&t=YVKZmvCw1O8UdSRQ-1)
-[Nav Page](https://www.figma.com/design/F8cC3t7FIN4dPH1bkqPS3a/CCPM-(Cinema)---Film-Page?t=YVKZmvCw1O8UdSRQ-1)
+Ajout de style avec CSS, pour faire correspondre l'application à la maquette suivante :
+- [Home Page](https://www.figma.com/design/zM6koRKTMNnZ7x2gem2mpd/CCPM-(Cinema)---Home-Page?node-id=0-1&t=YVKZmvCw1O8UdSRQ-1)
+- [Nav Page](https://www.figma.com/design/F8cC3t7FIN4dPH1bkqPS3a/CCPM-(Cinema)---Film-Page?t=YVKZmvCw1O8UdSRQ-1)
 
 ---
 
