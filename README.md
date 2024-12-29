@@ -34,6 +34,8 @@ Les ajouts et suppressions se font au sein des **Vues** mais également en base 
    ```
 
 3. Installer un logiciel type "Laragon" pour disposer d'un environnement qui permet d'exécuter un script PHP :
+
+- Télécharger Laragon [ici](https://laragon.org/download/)
 - Démarrer Laragon
 - Enregistrer le "Repo" dans le dossier laragon\www\
 - Exécuter la fonction "Web" de Laragon
@@ -45,7 +47,7 @@ Les ajouts et suppressions se font au sein des **Vues** mais également en base 
 
    ---
 
-## 5. Améliorations possibles
+## 4. Améliorations possibles
 
 Ajout de style avec CSS, pour faire correspondre l'application à la maquette suivante :
 - [Home Page](https://www.figma.com/design/zM6koRKTMNnZ7x2gem2mpd/CCPM-(Cinema)---Home-Page?node-id=0-1&t=YVKZmvCw1O8UdSRQ-1)
@@ -53,6 +55,6 @@ Ajout de style avec CSS, pour faire correspondre l'application à la maquette su
 
 ---
 
-## 6. Auteur
+## 5. Auteur
 Ce projet a été réalisé par Théo Arbogast (aka Xylo87).  
 N'hésitez pas à ouvrir une issue ou à me contacter pour toute suggestion ou question.
